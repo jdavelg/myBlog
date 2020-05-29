@@ -225,50 +225,28 @@ return [
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 5,
-            'label_color' => 'success',
+            'label_color' => 'warning',
         ],
         ['header' => 'Ajustes'],
         [
-            'text' => 'profile',
+            'text' => 'Perfil',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
+       
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'usuarios',
+            'icon'    => 'fas fa-users',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'ver lista de usuarios',
                     'url'  => '#',
                 ],
                 [
                     'text'    => 'level_one',
                     'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    
+                         
                 ],
                 [
                     'text' => 'level_one',
@@ -276,6 +254,39 @@ return [
                 ],
             ],
         ],
+
+
+
+        [
+            'text'    => 'publicaciones',
+            'icon'    => 'far fa-edit',
+            'submenu' => [
+                [
+                    'text' => 'ver lista de publicaciones',
+                    'url'  => '#',
+                ],
+               
+
+            ],
+        ],
+        [
+            'text'    => 'categorias',
+            'icon'    => 'fas fa-atlas',
+            'submenu' => [
+                [
+                    'text' => 'ver lista de publicaciones',
+                    'url'  => '#',
+                ],
+               
+                
+            ],
+        ],
+
+
+
+
+        
+
         ['header' => 'labels'],
         [
             'text'       => 'important',
