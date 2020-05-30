@@ -41,7 +41,7 @@
 
                 </td>
             <td>{{$post->user_id ? $post->user->name : "no tiene usuario xd"}}</td>
-            <td>{{$post->category_id}}</td>
+            <td>{{$post->category_id ? $post->category->name : "no tiene categoria"}}</td>
            
             <td>{{$post->title}}</td>
             <td>{{$post->body}}</td>

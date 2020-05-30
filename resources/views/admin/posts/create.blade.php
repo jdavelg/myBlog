@@ -30,8 +30,11 @@
     <div class="form-group">
       <label for="category_id">Categoria</label>
       <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
-        <option value="1">JavaScript</option>
-        <option value="2">PHP</option>
+        @foreach ($categories as $category)
+        <option value="{{$category->id}}">{{$category->name}}</option> 
+        @endforeach
+       
+        
       </select>
       @error('category_id')
 <span class="invalid-feedback" role="alert">
