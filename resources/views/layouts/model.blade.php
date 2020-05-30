@@ -129,10 +129,10 @@
             </a>
                             <ul class="nav nav-treeview">
                     <li  class="nav-item ">
-            <a class="nav-link  " href="#"
+            <a class="nav-link  " href="{{action('AdminUsersController@index')}}"
                               
             >
-                <i class="far fa-fw fa-circle "></i>
+                <i class="far fa-list-alt"></i>
                 <p>
                     ver lista de usuarios
 
@@ -140,27 +140,17 @@
             </a>
                     </li>
     <li  class="nav-item ">
-            <a class="nav-link  " href="#"
+            <a class="nav-link  " href="{{action('AdminUsersController@create')}}"
                               
             >
-                <i class="far fa-fw fa-circle "></i>
+                <i class="fas fa-pencil-alt "></i>
                 <p>
-                    Level 1
+                    Crear Nuevo usuario
 
                                                         </p>
             </a>
                     </li>
-    <li  class="nav-item ">
-            <a class="nav-link  " href="#"
-                              
-            >
-                <i class="far fa-fw fa-circle "></i>
-                <p>
-                    Level 1
-
-                                                        </p>
-            </a>
-                    </li>
+    
                     </ul>
                     </li>
     <li  class="nav-item has-treeview">
