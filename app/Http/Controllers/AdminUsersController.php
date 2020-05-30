@@ -59,7 +59,7 @@ class AdminUsersController extends Controller
     $input['password']=Hash::make($request->password);
     User::create($input);
 
-     /* return redirect('/admin/users'); */
+     return redirect('/admin/users');
     }
 
     /**

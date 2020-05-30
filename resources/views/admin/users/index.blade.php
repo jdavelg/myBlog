@@ -1,4 +1,5 @@
 @extends('layouts.model')
+
 @section('content')
     <h1>Users</h1>
 
@@ -6,6 +7,7 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">ID</th>
+            <th scope="col">PHOTO</th>
             <th scope="col">NAME</th>
             <th scope="col">Role</th>
             <th scope="col">E-MAIL</th>
@@ -23,6 +25,18 @@
                   
              
               <td>{{$user->id}}</td>
+          <td>
+            @if ($user->photo)
+            <img src="{{$user->photo->file}}" alt="avatar" srcset="" class="avatar" style="vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;">  
+            @else
+                No tiene foto
+            @endif
+            
+          
+          </td>
             <td>{{$user->name}}</td>
           <td>
             @if (!isset($user->role->name))
