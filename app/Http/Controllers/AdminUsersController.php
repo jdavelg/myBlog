@@ -10,6 +10,7 @@ use App\Photo;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UsersEditRequest;
 
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -121,6 +122,7 @@ $input['photo_id']= $photo->id;
 
        }
        $user->update($input);
+       Session::flash('message','Usuario Actualizado Satisfactoriamente');
        return redirect('/admin/users');
     }
 
@@ -132,6 +134,12 @@ $input['photo_id']= $photo->id;
      */
     public function destroy($id)
     {
-        //
+         $user= User::findOrFail($id);
+       
+        unlink(public_path().$user->photo->file);
+        $user->delete();
+        Session::flash('message','Usuario Eliminado');
+        return redirect('/admin/users');
+       
     }
 }

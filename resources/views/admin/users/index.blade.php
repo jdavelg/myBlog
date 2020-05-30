@@ -2,7 +2,11 @@
 
 @section('content')
     <h1>Users</h1>
-
+@if (Session::has('message'))
+<div class="alert alert-info" role="alert">
+ {{Session('message')}}
+</div>
+@endif
     <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -47,12 +51,18 @@
           </td> 
             <td>{{$user->email}}</td>
             <td>{{$user->created_at->diffForHumans()}}</td>
+            
             <td>
-                <a href="#" class="btn btn-danger">Eliminar</a>
+              <a href="{{route('users.edit', $user->id)}}" class="btn btn-success" style="margin-bottom: 10px">Editar</a>
+
+              {{ Form::open([ 'method'  => 'delete', 'route' => [ 'users.destroy', $user->id ] ]) }}
+              {{ Form::submit('Eliminar', ['class' => 'btn btn-danger']) }}
+          {{ Form::close() }}
+
                 
-                <a href="#" class="btn btn-success">Editar</a>
+                
             </td>
-          
+           
           </tr>
           @endforeach
             @endif

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,12 +13,14 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+Route::get('/', function(){
+    return view('home');
 });
 
-Auth::routes();
+   
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -27,6 +30,12 @@ Route::get('/admin', function(){
 });
 
 
+Route::middleware(['admin'])->group(function () {
+    Route::resource('/admin/users', 'AdminUsersController');
+    Route::get('/', function(){
+        return view('admin.index');
+    });
+    Route::resource('/admin/posts', 'AdminPostsController');
 
+});
 
-Route::resource('/admin/users', 'AdminUsersController');

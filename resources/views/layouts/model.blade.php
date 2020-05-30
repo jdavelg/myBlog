@@ -166,10 +166,10 @@
             </a>
                             <ul class="nav nav-treeview">
                     <li  class="nav-item ">
-            <a class="nav-link  " href="#"
+            <a class="nav-link  " href="{{action('AdminPostsController@index')}}"
                               
             >
-                <i class="far fa-fw fa-circle "></i>
+                <i class="fas fa-scroll "></i>
                 <p>
                     ver lista de publicaciones
 
@@ -177,6 +177,21 @@
             </a>
                     </li>
                     </ul>
+
+                    <ul class="nav nav-treeview">
+                        <li  class="nav-item ">
+                <a class="nav-link  " href="{{action('AdminPostsController@create')}}"
+                                  
+                >
+                    <i class="fas fa-pencil-alt"></i>
+                    <p>
+                        Crear Publicacion Nueva
+    
+                                                            </p>
+                </a>
+                        </li>
+                        </ul>
+
                     </li>
     <li  class="nav-item has-treeview">
             <a class="nav-link nav-item " href="#"
