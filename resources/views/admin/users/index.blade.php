@@ -37,7 +37,7 @@
             
           
           </td>
-            <td>{{$user->name}}</td>
+        <td><a href="{{route('users.edit', $user->id)}}">{{$user->name}}</a></td>
           <td>
             @if (!isset($user->role->name))
               
