@@ -218,6 +218,24 @@
                     </li>
                    
                     </ul>
+
+
+
+                    <li  class="nav-item ">
+                        <a class="nav-link  " href="{{action('AdminMediasController@index')}}"
+                                          
+                        >
+                            <i class="fas fa-photo-video "></i>
+                            <p>
+                                All Media
+            
+                                                                    </p>
+                        </a>
+                                </li>
+
+
+
+
                     </li>
     <li  class="nav-header">LABELS</li>
     <li  class="nav-item ">
