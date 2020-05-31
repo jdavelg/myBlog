@@ -31,7 +31,7 @@
       <label for="category_id">Categoria</label>
       <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
         @foreach ($categories as $category)
-        <option value="{{$category->id}}">{{$category->name}}</option> 
+        <option  value="{{$category->id}}">{{$category->name}}</option> 
         @endforeach
        
         

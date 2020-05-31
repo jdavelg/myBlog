@@ -206,16 +206,17 @@
             </a>
                             <ul class="nav nav-treeview">
                     <li  class="nav-item ">
-            <a class="nav-link  " href="#"
+                    <a class="nav-link  " href="{{action('AdminCategoriesController@index')}}"
                               
             >
-                <i class="far fa-fw fa-circle "></i>
+                <i class="fas fa-scroll "></i>
                 <p>
-                    ver lista de publicaciones
+                    Ver lista de Categorias
 
                                                         </p>
             </a>
                     </li>
+                   
                     </ul>
                     </li>
     <li  class="nav-header">LABELS</li>

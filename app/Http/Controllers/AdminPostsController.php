@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Photo;
 use App\User;
-
+use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class AdminPostsController extends Controller
 {
@@ -46,8 +47,8 @@ $categories=Category::all();
     public function store(Request $request)
     {
      $input=  Validator::make($request->all(),[
-            /* 'category_id'=>'required',
-            'photo_id'=>'required', */
+            'category_id'=>'required',
+            'photo_id'=>'required', 
             'title' => 'required|max:255',
             'body' => 'required',
         ])->validate();
@@ -87,7 +88,9 @@ $input['photo_id']=$photo->id;
      */
     public function edit($id)
     {
-        //
+        $categories= Category::all();
+        $post= Post::findOrfail($id);
+       return view('admin.posts.edit',compact('post','categories'));
     }
 
     /**
@@ -99,7 +102,29 @@ $input['photo_id']=$photo->id;
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $input=  $request->all();
+            
+
+       
+        if($request->file('photo_id')== null|| $request->file('photo_id')== ''){
+       
+$input=$request->except('photo_id');
+
+        }else{
+            
+            $file=$request->file('photo_id');
+            $name=time().$file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo= Photo::create(['file'=>$name]);
+
+$input['photo_id']=$photo->id;
+        }
+        $user= Auth::user();
+        $user->posts()->whereId($id)->first()->update($input);
+        Session::flash('message','El post ha sido Actualizado Correctamente');
+        return redirect('/admin/posts');
+
     }
 
     /**
@@ -110,6 +135,13 @@ $input['photo_id']=$photo->id;
      */
     public function destroy($id)
     {
-        //
+        $post=Post::findOrFail($id);
+        if($post->photo_id){
+        unlink(public_path().$post->photo->file);
+    }
+        $post->delete();
+        Session::flash('message','El post ha sido Eliminado Correctamente');
+        return redirect('/admin/posts');
+       
     }
 }

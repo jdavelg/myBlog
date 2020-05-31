@@ -3,7 +3,10 @@
 @section('content')
     
 <h1>Posts</h1>
-
+<br>
+@if(Session::has('message'))
+<p class="alert alert-info">{{ Session::get('message') }}</p>
+@endif
 <table class="table">
     <thead class="thead-success bg-success">
       <tr>
@@ -15,7 +18,7 @@
         <th scope="col">titulo</th>
         <th scope="col">Cuerpo</th>
         <th scope="col">Fecha de Creacion</th>
-        <th scope="col">Actualizado</th>
+        <th scope="col">Accion</th>
 
       </tr>
     </thead>
@@ -46,7 +49,12 @@
             <td>{{$post->title}}</td>
             <td>{{$post->body}}</td>
             <td>{{$post->created_at->diffForHumans()}}</td>
-            {{-- <td>{{$post->updated_at->diffForHumans()}}</td> --}}
+              <td>
+                <a href="{{route('posts.edit', $post->id)}}" type="button" class="btn btn-outline-success" >Editar</a>
+                {{ Form::open([ 'method'  => 'delete', 'route' => [ 'posts.destroy', $post->id ] ]) }}
+                {{ Form::submit('Eliminar', ['class' => 'btn btn-outline-danger']) }}
+            {{ Form::close() }}
+              </td> 
         </tr> 
             @endforeach
           
